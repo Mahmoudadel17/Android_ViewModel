@@ -1,6 +1,7 @@
 package com.example.todoapp.androidCookies
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -14,8 +15,14 @@ import androidx.compose.material.ContentAlpha
 import androidx.compose.material.LocalContentAlpha
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -42,14 +49,20 @@ fun GymsScreen() {
 @Composable
 
 fun GymItem(gym:Gym) {
+    var isFavoriteState by rememberSaveable { mutableStateOf(false) }
+    var icon = if (isFavoriteState) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder
     Card(
         modifier = Modifier.padding(8.dp),
         elevation = 8.dp,
         shape = RoundedCornerShape(16.dp),
         ) {
         Row(verticalAlignment = Alignment.CenterVertically,modifier = Modifier.padding(8.dp),) {
-            GymIcon(Icons.Filled.Place,Modifier.weight(0.15f))
-            GymDetails(gym,Modifier.weight(0.85f))
+            GymIcon(Icons.Filled.Place,"Place Icon",Modifier.weight(0.15f))
+            GymDetails(gym,Modifier.weight(0.70f))
+            GymIcon(icon,"Favorite Icon",Modifier.weight(0.15f)){
+                isFavoriteState = !isFavoriteState
+            }
+
         }
     }
 }
@@ -74,11 +87,14 @@ fun GymDetails(gym: Gym,modifier: Modifier) {
 }
 
 @Composable
-fun GymIcon(icon: ImageVector, modifier: Modifier) {
+fun GymIcon(icon: ImageVector,contentDescription:String, modifier: Modifier,onIconClick:()-> Unit = {}) {
     Image(
         imageVector = icon,
-        contentDescription = "Gym Icon",
-        modifier = modifier,
-        colorFilter = ColorFilter.tint(Color.DarkGray)
+        contentDescription = contentDescription,
+        modifier = modifier.clickable {
+            onIconClick()
+        },
+        colorFilter = ColorFilter.tint(Color.DarkGray),
+
     )
 }
