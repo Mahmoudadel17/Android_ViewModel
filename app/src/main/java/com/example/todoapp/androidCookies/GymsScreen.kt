@@ -38,19 +38,20 @@ import com.example.todoapp.ui.theme.Purple40
 @Composable
 fun GymsScreen() {
     val vm:GymsViewModel = viewModel()
+
     LazyColumn{
-        items(vm.getGyms()){gym ->
-            GymItem(gym)
+        items(vm.state){gym ->
+            GymItem(gym){
+                vm.toggleFavoriteState(it)
+            }
         }
     }
 
 }
 
 @Composable
-
-fun GymItem(gym:Gym) {
-    var isFavoriteState by rememberSaveable { mutableStateOf(false) }
-    var icon = if (isFavoriteState) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder
+fun GymItem(gym:Gym,onIconClick:(Int)-> Unit) {
+    var icon = if (gym.isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder
     Card(
         modifier = Modifier.padding(8.dp),
         elevation = 8.dp,
@@ -60,7 +61,7 @@ fun GymItem(gym:Gym) {
             GymIcon(Icons.Filled.Place,"Place Icon",Modifier.weight(0.15f))
             GymDetails(gym,Modifier.weight(0.70f))
             GymIcon(icon,"Favorite Icon",Modifier.weight(0.15f)){
-                isFavoriteState = !isFavoriteState
+                onIconClick(gym.id)
             }
 
         }
