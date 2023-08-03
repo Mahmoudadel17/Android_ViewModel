@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.todoapp.androidCookies.GymsScreen
 import com.example.todoapp.task.HomeRegister
 import com.example.todoapp.task.Register
 import com.example.todoapp.ui.theme.ToDoAppTheme
@@ -17,6 +18,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ToDoAppTheme {
+                GymsScreen()
+
 //                val navController = rememberNavController()
 //                NavHost(navController = navController, startDestination = "register" ){
 //                    composable("home/{firstName}/{lastName}/{email}/{age}",
