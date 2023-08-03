@@ -19,10 +19,6 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -51,7 +47,7 @@ fun GymsScreen() {
 
 @Composable
 fun GymItem(gym:Gym,onIconClick:(Int)-> Unit) {
-    var icon = if (gym.isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder
+    val icon = if (gym.isFavorite) Icons.Filled.Favorite else Icons.Filled.FavoriteBorder
     Card(
         modifier = Modifier.padding(8.dp),
         elevation = 8.dp,
