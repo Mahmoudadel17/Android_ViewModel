@@ -39,16 +39,17 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.example.todoapp.R
+import com.example.todoapp.navigation.NavigationScreens
+import com.example.todoapp.navigation.Screens
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LoginScreen(navController: NavHostController) {
+fun LoginScreen(navController: NavController) {
     val context = LocalContext.current
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
@@ -156,7 +157,7 @@ fun LoginScreen(navController: NavHostController) {
             Spacer(modifier = Modifier.weight(1f))
 
         }
-        ButtonClickOn("Login",90) {
+        ButtonClickOn("Login",100) {
             val validationAuthBack = validationLogin(email, password)
             emailErrorMessage = validationAuthBack.emailErrorMessage
             passwordErrorMessage = validationAuthBack.passwordErrorMessage
@@ -169,9 +170,9 @@ fun LoginScreen(navController: NavHostController) {
                 } else {
                     Toast.makeText(context, "Login successful!", Toast.LENGTH_SHORT).show()
                 }
-
+                navController.navigate(Screens.HomeRoute.route)
             }
-            navController.navigate("home")
+
         }
         Row() {
             Text(
@@ -188,7 +189,7 @@ fun LoginScreen(navController: NavHostController) {
                 modifier = Modifier
                     .padding(top = 3.dp)
                     .clickable {
-                        navController.navigate("register")
+                        navController.navigate(Screens.SignUpScreen.route)
                     },
                 color = Color.DarkGray,
                 fontSize = 12.sp,

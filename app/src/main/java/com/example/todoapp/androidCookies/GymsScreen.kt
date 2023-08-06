@@ -52,7 +52,7 @@ fun GymItem(gym:Gym,onIconClick:(Int)-> Unit) {
         modifier = Modifier.padding(8.dp),
         elevation = 8.dp,
         shape = RoundedCornerShape(16.dp),
-        ) {
+    ) {
         Row(verticalAlignment = Alignment.CenterVertically,modifier = Modifier.padding(8.dp),) {
             GymIcon(Icons.Filled.Place,"Place Icon",Modifier.weight(0.15f))
             GymDetails(gym,Modifier.weight(0.70f))
@@ -93,5 +93,5 @@ fun GymIcon(icon: ImageVector,contentDescription:String, modifier: Modifier,onIc
         },
         colorFilter = ColorFilter.tint(Color.DarkGray),
 
-    )
+        )
 }

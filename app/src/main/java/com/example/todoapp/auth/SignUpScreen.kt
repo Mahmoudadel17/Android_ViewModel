@@ -39,16 +39,17 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavHostController
+import androidx.navigation.NavController
 import com.example.todoapp.R
+import com.example.todoapp.navigation.NavigationScreens
+import com.example.todoapp.navigation.Screens
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignUpScreen(navController: NavHostController) {
+fun SignUpScreen(navController: NavController) {
     val context = LocalContext.current
     var userName by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }
@@ -201,9 +202,7 @@ fun SignUpScreen(navController: NavHostController) {
                 } else {
                     Toast.makeText(context, "Login successful!", Toast.LENGTH_SHORT).show()
                 }
-                navController.navigate("home")
-
-            }
+                navController.navigate(Screens.HomeRoute.route)            }
         }
 
         Row{
@@ -221,7 +220,7 @@ fun SignUpScreen(navController: NavHostController) {
                 modifier = Modifier
                     .padding(top = 3.dp)
                     .clickable {
-                        navController.navigate("login")
+                        navController.navigate(Screens.LoginScreen.route)
                     },
                 color = Color.DarkGray,
                 fontSize = 12.sp,

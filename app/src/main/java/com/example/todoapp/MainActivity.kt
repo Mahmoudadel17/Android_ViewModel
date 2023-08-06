@@ -3,24 +3,31 @@ package com.example.todoapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.navigation.NavType
+
+import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import com.example.todoapp.androidCookies.GymsScreen
-import com.example.todoapp.task.HomeRegister
-import com.example.todoapp.task.Register
+import com.example.todoapp.auth.LoginScreen
+import com.example.todoapp.auth.SignUpScreen
+import com.example.todoapp.navigation.Navigate
+import com.example.todoapp.navigation.NavigationScreens
 import com.example.todoapp.ui.theme.ToDoAppTheme
+import androidx.compose.material.*
+import androidx.navigation.NavGraph.Companion.findStartDestination
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             ToDoAppTheme {
-                GymsScreen()
+                //GymsScreen()
+                Navigate()
 
-//                val navController = rememberNavController()
 //                NavHost(navController = navController, startDestination = "register" ){
 //                    composable("home/{firstName}/{lastName}/{email}/{age}",
 //                        arguments = listOf(
@@ -43,7 +50,11 @@ class MainActivity : ComponentActivity() {
 //                    }
 //
 //                }
+
+
+
             }
         }
     }
 }
+

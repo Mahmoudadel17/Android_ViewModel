@@ -90,7 +90,6 @@ fun ButtonClickOn(buttonText:String,paddingValue:Int ,onButtonClick:() -> Unit )
             .padding(8.dp, top =paddingValue.dp)
             .fillMaxWidth(1f)
 
-
     ){
         Text(text = buttonText, fontSize = 30.sp, style = TextStyle(color = MaterialTheme.colorScheme.background))
     }
