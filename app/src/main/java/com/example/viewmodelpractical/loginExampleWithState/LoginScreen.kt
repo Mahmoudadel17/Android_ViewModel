@@ -1,4 +1,4 @@
-package com.example.viewmodelpractical
+package com.example.viewmodelpractical.loginExampleWithState
 
 
 
@@ -20,11 +20,12 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.viewmodelpractical.R
 
 
 @Composable
 fun LoginScreen() {
-    val viewModel:LoginViewModel = viewModel()
+    val viewModel: LoginViewModel = viewModel()
     val state = viewModel.state
     Column(
         verticalArrangement = Arrangement.Center,

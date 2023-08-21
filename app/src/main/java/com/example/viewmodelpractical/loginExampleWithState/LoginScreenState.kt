@@ -1,4 +1,4 @@
-package com.example.viewmodelpractical
+package com.example.viewmodelpractical.loginExampleWithState
 
 data class LoginScreenState(
     val email:String,
