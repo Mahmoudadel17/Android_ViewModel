@@ -45,6 +45,9 @@ class LoginViewModel: ViewModel() {
 
     }
 
+
+
+
     fun onCheckBoxClick(){
         val newValue = _state.checkBox.not()
        _state = _state.copy(
